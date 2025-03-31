@@ -1,0 +1,18 @@
+### Build ###
+/build/
+/target/
+
+### IDE ###
+.idea/
+*.iml
+*.iws
+*.ipr
+
+### OS ###
+.DS_Store
+
+### Logs ###
+*.log
+
+### Other ###
+HELP.md
