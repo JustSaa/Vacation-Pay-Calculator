@@ -2,6 +2,7 @@ package org.example.vacation.application;
 
 import org.example.vacation.domain.VacationCalculation;
 
+import org.example.vacation.util.WorkingDaysCalculator;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -16,7 +17,7 @@ public class VacationCalculationService {
     }
 
     public BigDecimal calculate(BigDecimal averageSalary, LocalDate start, LocalDate end) {
-        long totalDays = ChronoUnit.DAYS.between(start, end) + 1;
-        return VacationCalculation.calculateVacationPay(averageSalary, (int) totalDays);
+        int workingDays = WorkingDaysCalculator.countWorkingDays(start, end);
+        return VacationCalculation.calculateVacationPay(averageSalary, workingDays);
     }
 }
