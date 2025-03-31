@@ -27,15 +27,17 @@ class VacationCalculationServiceTest {
     }
 
     @Test
-    void shouldCalculateByDateRangeCorrectly() {
+    void shouldCalculateByDateRangeExcludingWeekendsAndHolidays() {
         BigDecimal salary = new BigDecimal("60000");
         LocalDate start = LocalDate.of(2024, 5, 1);
         LocalDate end = LocalDate.of(2024, 5, 10);
 
+        int expectedWorkingDays = 6;
+
         BigDecimal expected = salary
                 .divide(BigDecimal.valueOf(12), 2, RoundingMode.HALF_UP)
                 .divide(BigDecimal.valueOf(29.3), 2, RoundingMode.HALF_UP)
-                .multiply(BigDecimal.valueOf(10));
+                .multiply(BigDecimal.valueOf(expectedWorkingDays));
 
         BigDecimal actual = service.calculate(salary, start, end);
         assertEquals(0, expected.compareTo(actual));
