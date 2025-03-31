@@ -1,5 +1,6 @@
 package org.example.vacation.api;
 
+import io.swagger.v3.oas.annotations.Operation;
 import org.example.vacation.api.dto.VacationRequestDto;
 import org.example.vacation.api.dto.VacationResponseDto;
 import org.example.vacation.application.VacationCalculationService;
@@ -24,6 +25,10 @@ public class VacationController {
     }
 
     @GetMapping
+    @Operation(
+            summary = "Рассчитать отпускные",
+            description = "Рассчитывает сумму отпускных по средней зарплате. Можно указать количество дней отпуска или диапазон дат (тогда учитываются только рабочие дни)"
+    )
     public ResponseEntity<VacationResponseDto> calculateVacation(@Valid VacationRequestDto request) {
         BigDecimal amount;
 
