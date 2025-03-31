@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
 
 @Service
 public class VacationCalculationService {
@@ -43,5 +44,9 @@ public class VacationCalculationService {
         ));
 
         return result;
+    }
+
+    public List<VacationCalculationEntity> getAll() {
+        return repository.findAll();
     }
 }
