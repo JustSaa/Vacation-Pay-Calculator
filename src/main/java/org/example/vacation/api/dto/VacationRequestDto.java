@@ -1,5 +1,7 @@
 package org.example.vacation.api.dto;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
@@ -10,10 +12,12 @@ public class VacationRequestDto {
     @DecimalMin(value = "0.01", message = "Average salary must be greater than 0")
     private BigDecimal averageSalary;
     private Integer vacationDays;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate startDate;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate endDate;
 
-    // Getters and Setters
     public BigDecimal getAverageSalary() {
         return averageSalary;
     }
