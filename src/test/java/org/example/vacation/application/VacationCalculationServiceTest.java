@@ -1,5 +1,6 @@
 package org.example.vacation.application;
 
+import org.example.vacation.infrastructure.persistence.repository.VacationCalculationRepository;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -7,10 +8,11 @@ import java.math.RoundingMode;
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
 
 class VacationCalculationServiceTest {
 
-    private final VacationCalculationService service = new VacationCalculationService();
+    private final VacationCalculationService service = new VacationCalculationService(mock(VacationCalculationRepository.class));
 
     @Test
     void shouldCalculateByDaysCorrectly() {
